@@ -18,8 +18,7 @@ public class Main {
         double overDraft = 0;
 
 
-
-        Account myAccount=null;
+        Account myAccount = null;
 
 
         System.out.print("Enter your ID :");
@@ -29,7 +28,7 @@ public class Main {
         System.out.print("Enter your Name :");
         String name = scanner.nextLine();
 
-        System.out.println("Which account want to use ? (1) Current Account or (2) Saving Account :");
+        System.out.print("Which account want to use ? (1) Current Account or (2) Saving Account :");
         int accNum = scanner.nextInt();
 
         if (accNum == 1) {
@@ -52,7 +51,7 @@ public class Main {
 
             System.out.println("Invalid Input.Defaulting Saving Account.");
 
-            myAccount= new SavingAccount(userId, name, amou, 0.02);
+            myAccount = new SavingAccount(userId, name, amou, 0.02);
 
 
         }
@@ -60,8 +59,16 @@ public class Main {
 
         while (flag) {
 
-            System.out.print("Deposit(D) or Withdraw(W) or View Transaction History(T)or Adding Interest(I) or" +
-                    " View Account Details(V) or Delete Account(L) or Exit(E) : ");
+
+            System.out.println("Deposit (D) :");
+            System.out.println("Withdraw (W) :");
+            System.out.println("Transaction History (T) :");
+            System.out.println("Adding Interest (I) :");
+            System.out.println("View Account Details (V) :");
+            System.out.println("Delete Account (L) : ");
+            System.out.println("Exit (E) :");
+
+
             char ch = scanner.next().charAt(0);
 
 
