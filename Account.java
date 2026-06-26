@@ -10,7 +10,7 @@ public abstract class Account {
 
     private String owner_name;
 
-    private  double balance;
+    protected double balance;
 
     protected Account(int accountNumber,String owner_name,double balance) {
         this.accountNumber = accountNumber;
@@ -42,7 +42,7 @@ public abstract class Account {
         }
 
 
-            if (amount > 0) {
+            if (amount > 0 ) {
 
 
                 balance = balance + amount;
@@ -89,26 +89,7 @@ public abstract class Account {
 
     }
 
-    public void Transfer(Account target_account , double amount){
 
-if(balance > amount){
-
-    Withdraw(amount);
-
-    target_account.Deposit(amount);
-
-    System.out.println("Transaction Successful.");
-
-}else{
-
-    System.out.println("Transaction Fail.Insufficient Balance.");
-
-}
-
-
-
-
-    }
 
     public void viewAccountDetails(){
 
@@ -155,6 +136,12 @@ if(balance > amount){
        System.out.println("Account Deleted Successfully.");
 
     }
+
+    public abstract void applyInterest();
+
+
+
+
 
 
 }
