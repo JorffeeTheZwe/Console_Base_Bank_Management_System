@@ -10,17 +10,15 @@ public abstract class Account {
 
     private String owner_name;
 
-    private  double balance;
+    protected double balance;
 
-    protected Account(int accountNumber,String owner_name,double balance) {
+    protected Account(int accountNumber, String owner_name, double balance) {
         this.accountNumber = accountNumber;
-        this.owner_name=owner_name;
-        this.balance=balance;
-        this.tranHistory =new ArrayList<>();
+        this.owner_name = owner_name;
+        this.balance = balance;
+        this.tranHistory = new ArrayList<>();
 
 
-
-        tranHistory.add("Account Open Successfully.Current Balance is :"+balance);
     }
 
     public String getOwner_name() {
@@ -34,7 +32,7 @@ public abstract class Account {
 
     public void Deposit(double amount) {
 
-        if(!isActive) {
+        if (!isActive) {
 
             System.out.println("Account Not Found.");
 
@@ -42,45 +40,43 @@ public abstract class Account {
         }
 
 
-            if (amount > 0) {
+        if (amount > 0) {
 
 
-                balance = balance + amount;
+            balance = balance + amount;
 
-                System.out.println("Deposit Done " + amount);
+            System.out.println("Deposit Done " + amount);
 
-                tranHistory.add("Deposit :" + amount + "Balance :" + balance);
+            tranHistory.add("Deposit :" + amount + "Balance :" + balance);
 
-            } else {
+        } else {
 
-                System.out.println("Something Wrong.");
-
+            System.out.println("Something Wrong.");
 
 
         }
     }
 
 
-    public void Withdraw(double amount){
+    public void Withdraw(double amount) {
 
-        if(!isActive){
+        if (!isActive) {
 
             System.out.println("Account Not Found.");
 
             return;
         }
 
-        if(balance >= amount){
+        if (balance >= amount) {
 
             balance = balance - amount;
 
-            System.out.println("Widthdraw Done :"+amount);
+            System.out.println("Widthdraw Done :" + amount);
 
-            tranHistory.add("Withdraw Done :"+amount+"| Balance :"+balance);
+            tranHistory.add("Withdraw Done :" + amount + "| Balance :" + balance);
 
 
-
-        }else{
+        } else {
 
             System.out.println("Insufficient amount.");
 
@@ -89,41 +85,21 @@ public abstract class Account {
 
     }
 
-    public void Transfer(Account target_account , double amount){
 
-if(balance > amount){
+    public void viewAccountDetails() {
 
-    Withdraw(amount);
+        System.out.println("Account Number :" + accountNumber);
 
-    target_account.Deposit(amount);
+        System.out.println("Account Owner Name :" + owner_name);
 
-    System.out.println("Transaction Successful.");
-
-}else{
-
-    System.out.println("Transaction Fail.Insufficient Balance.");
-
-}
-
-
-
-
-    }
-
-    public void viewAccountDetails(){
-
-        System.out.println("Account Number :"+accountNumber);
-
-        System.out.println("Account Owner Name :"+owner_name);
-
-        System.out.println("Account Balance :"+balance);
+        System.out.println("Account Balance :" + balance);
 
     }
 
 
-    public void TransactionHistory(){
+    public void TransactionHistory() {
 
-        if(!isActive){
+        if (!isActive) {
 
             System.out.println("Account Not Found.");
 
@@ -131,30 +107,32 @@ if(balance > amount){
 
         }
 
-        System.out.println("Transcation History for account :"+this.accountNumber);
+        System.out.println("Transcation History for account :" + this.accountNumber);
 
-        for(String h : tranHistory){
+        for (String h : tranHistory) {
 
             System.out.println(h);
         }
 
     }
 
-    boolean isActive=true;
+    boolean isActive = true;
 
-    public void delete(){
+    public void delete() {
 
-       tranHistory.clear();
+        tranHistory.clear();
 
-       this.balance=0;
+        this.balance = 0;
 
-       this.owner_name=null;
+        this.owner_name = null;
 
-       this.isActive=false;
+        this.isActive = false;
 
-       System.out.println("Account Deleted Successfully.");
+        System.out.println("Account Deleted Successfully.");
 
     }
+
+    public abstract void applyInterest();
 
 
 }
