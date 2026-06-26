@@ -3,6 +3,8 @@ package Day2;
 
 import java.util.Scanner;
 
+import java.lang.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,17 +23,17 @@ public class Main {
         System.out.print("Enter your Name :");
         String name = scanner.nextLine();
 
-        Account acc = new SavingAccount(userId, name, amou);
+        Account acc = new SavingAccount(userId, name, amou,0.02);
 
 
         while (flag) {
 
-            System.out.print("Deposit(D) or Withdraw(W) or View Transaction History(T) or" +
+            System.out.print("Deposit(D) or Withdraw(W) or View Transaction History(T)or Adding Interest(I) or" +
                     " View Account Details(V) or Delete Account(L) or Exit(E) : ");
             char ch = scanner.next().charAt(0);
 
 
-            if (ch == 'D') {
+            if (String.valueOf(ch).equalsIgnoreCase("D")) {
 
 
                 System.out.print("Enter Deposit Amount :");
@@ -40,7 +42,7 @@ public class Main {
                 acc.Deposit(amou);
 
 
-            } else if (ch == 'W') {
+            } else if (String.valueOf(ch).equalsIgnoreCase("W")) {
 
                 System.out.print("Enter Withdraw Amount :");
 
@@ -51,7 +53,7 @@ public class Main {
 
 
 
-            } else if (ch == 'T') {
+            } else if (String.valueOf(ch).equalsIgnoreCase("T")) {
 
 
                 System.out.print("View Transaction History :");
@@ -60,7 +62,7 @@ public class Main {
 
                 acc.TransactionHistory();
 
-            }else if(ch=='V'){
+            }else if(String.valueOf(ch).equalsIgnoreCase("V")){
 
                 System.out.println("Enter your account details :");
 
@@ -69,18 +71,28 @@ public class Main {
 
 
 
-            } else if (ch == 'L') {
+
+
+            } else if (String.valueOf(ch).equalsIgnoreCase("L")) {
 
                 System.out.println("Enter Id  for delete :");
 
                 acc.delete();
 
 
-            } else if (ch == 'E') {
+            } else if (String.valueOf(ch).equalsIgnoreCase("E")) {
 
                 System.out.println("Program Exit.");
 
                 flag = false;
+
+
+            }else if(String.valueOf(ch).equalsIgnoreCase("I")){
+
+                System.out.println("View Interest :");
+
+                acc.applyInterest();
+
 
 
             } else {
